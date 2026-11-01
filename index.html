@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gadgelect | Gadget & electronics repairs that come to you</title>
-  <meta name="description" content="Get an online diagnosis for your phone, laptop or electronics and get it repaired without leaving your house. People who need repairs and the technicians who do them, on one platform. Chat on WhatsApp: +234 912 288 8508." />
+  <meta name="description" content="Gadgelect is building AI-powered gadget and electronics repair: online diagnosis, at-home repairs, and one platform for people who need repairs and the technicians who do them. Chat on WhatsApp: +234 912 288 8508." />
   <meta name="theme-color" content="#06111f" />
   <link rel="canonical" href="https://gadgetsandelectronics.com/" />
   <meta property="og:title" content="Gadgelect: repairs that come to you" />
@@ -106,6 +106,17 @@
     .num { font-size: .9rem; color: var(--blue); font-weight: 700; letter-spacing: .08em; }
     .card h3 { font-size: 1.45rem; letter-spacing: -.02em; margin: 34px 0 8px; line-height: 1.15; }
     .card p { color: var(--muted); }
+
+    /* What we're building (AI roadmap) */
+    .building { padding: 50px 0 40px; }
+    .building-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
+    .building-head h2 { font-size: clamp(1.9rem, 4.6vw, 3.2rem); letter-spacing: -.04em; line-height: 1.02; max-width: 16ch; }
+    .building-head h2 em { font-style: normal; color: var(--blue-light); }
+    .building-head p { color: var(--muted); max-width: 420px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-light); border: 1px solid rgba(2,147,214,.45); border-radius: 99px; padding: 5px 12px; margin-bottom: 18px; }
+    .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+    .flywheel { margin-top: 16px; border: 1px dashed rgba(2,147,214,.45); border-radius: 18px; padding: 18px 24px; color: var(--muted); }
+    .flywheel b { color: var(--text); font-weight: 500; }
 
     /* Technician band */
     .tech { padding: 40px 0 90px; }
@@ -211,6 +222,34 @@
             <p>We arrange pickup or an at-home repair and get your device back to you.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="building" id="ai">
+      <div class="wrap">
+        <span class="badge">In development</span>
+        <div class="building-head">
+          <h2>What we're building: <em>AI-powered repair.</em></h2>
+          <p>Today, our technicians diagnose your device over WhatsApp. Next, AI does the first diagnosis instantly, and technicians get AI help to fix devices faster.</p>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <span class="num">AI TRIAGE</span>
+            <h3>Instant diagnosis from a photo or video</h3>
+            <p>Send a photo, video or voice note of the problem. AI identifies the likely fault and gives a price range before a technician confirms it.</p>
+          </div>
+          <div class="card">
+            <span class="num">DEVICE CHECK</span>
+            <h3>A health check that runs on your device</h3>
+            <p>A quick test through a link or a lightweight app checks the battery, charging, screen, touch, cameras, audio and storage, then AI explains the results in plain language.</p>
+          </div>
+          <div class="card">
+            <span class="num">TECHNICIAN AI</span>
+            <h3>An AI assistant for repair technicians</h3>
+            <p>Technicians get the diagnosis, likely causes, the parts needed and repair steps for the exact model, so repairs are faster and get it right first time.</p>
+          </div>
+        </div>
+        <p class="flywheel"><b>Every repair makes it smarter.</b> Each completed job records the symptoms, the actual fault and the fix, building a repair dataset that keeps improving diagnosis and pricing.</p>
       </div>
     </section>
 
