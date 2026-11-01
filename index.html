@@ -11,6 +11,9 @@
   <meta property="og:description" content="Online diagnosis and at-home gadget & electronics repairs. Chat with us on WhatsApp." />
   <meta property="og:url" content="https://gadgetsandelectronics.com/" />
   <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"Gadgelect","url":"https://gadgetsandelectronics.com/","logo":"https://gadgetsandelectronics.com/logo.png","email":"joe@gadgetsandelectronics.com","telephone":"+2349122888508"}
+  </script>
   <meta property="og:image" content="https://gadgetsandelectronics.com/apple-touch-icon.png" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -136,6 +139,8 @@
 
     footer { border-top: 1px solid var(--line); padding: 26px 0; color: var(--muted); font-size: .88rem; }
     footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    footer .contact { display: flex; gap: 24px; flex-wrap: wrap; }
+    footer a:hover { color: var(--text); }
 
     /* Entrance animation: opacity + transform only, no layout shift */
     .rise { opacity: 0; transform: translateY(24px); animation: rise .9s var(--ease) forwards; }
@@ -271,7 +276,10 @@
   <footer>
     <div class="wrap">
       <span>&copy; 2026 Gadgelect &middot; gadgetsandelectronics.com</span>
-      <a href="https://wa.me/2349122888508" target="_blank" rel="noopener">WhatsApp +234 912 288 8508</a>
+      <span class="contact">
+        <a href="mailto:joe@gadgetsandelectronics.com">joe@gadgetsandelectronics.com</a>
+        <a href="https://wa.me/2349122888508" target="_blank" rel="noopener">WhatsApp +234 912 288 8508</a>
+      </span>
     </div>
   </footer>
 </body>
