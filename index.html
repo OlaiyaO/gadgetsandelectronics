@@ -3,78 +3,235 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gadgets & Electronics | Get your device fixed without leaving home</title>
-  <meta name="description" content="Get an online diagnosis for your phone, laptop or electronics, and get it repaired without leaving your house. Technicians and customers connect on one platform. Chat on WhatsApp: +234 912 288 8508." />
+  <title>Gadgelect | Gadget & electronics repairs that come to you</title>
+  <meta name="description" content="Get an online diagnosis for your phone, laptop or electronics and get it repaired without leaving your house. People who need repairs and the technicians who do them, on one platform. Chat on WhatsApp: +234 912 288 8508." />
+  <meta name="theme-color" content="#06111f" />
   <link rel="canonical" href="https://gadgetsandelectronics.com/" />
-  <meta property="og:title" content="Gadgets & Electronics: repairs without leaving home" />
-  <meta property="og:description" content="Online diagnosis and at-home repairs. One platform for people who need repairs and the technicians who fix them." />
+  <meta property="og:title" content="Gadgelect: repairs that come to you" />
+  <meta property="og:description" content="Online diagnosis and at-home gadget & electronics repairs. Chat with us on WhatsApp." />
   <meta property="og:url" content="https://gadgetsandelectronics.com/" />
   <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231A9BFF'/%3E%3Ctext x='16' y='22.5' font-family='Arial,sans-serif' font-weight='700' font-size='18' text-anchor='middle' fill='white'%3EG%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
-    :root { --green: #25D366; --dark: #0b1f17; }
+    :root {
+      --blue: #1A9BFF;
+      --blue-light: #7CC8FF;
+      --bg: #06111f;
+      --surface: rgba(255,255,255,.04);
+      --line: rgba(255,255,255,.10);
+      --text: #EAF4FF;
+      --muted: #93A9C2;
+      --ease: cubic-bezier(.2,.7,.2,1);
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(135deg, var(--dark), #134e36);
-      color: #fff; line-height: 1.6;
-      display: flex; flex-direction: column; min-height: 100vh;
+      font-family: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
     }
-    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 20px; text-align: center; }
-    .box { max-width: 680px; }
-    .logo { font-weight: 800; font-size: 1.1rem; letter-spacing: .3px; margin-bottom: 36px; }
-    .logo span { color: var(--green); }
-    h1 { font-size: clamp(2rem, 6vw, 3.1rem); line-height: 1.15; margin-bottom: 18px; }
-    .lead { font-size: 1.12rem; opacity: .9; margin-bottom: 28px; }
-    ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 36px; }
-    li { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 50px; padding: 7px 16px; font-size: .95rem; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+
+    /* Background glow: static gradients, only transform is animated (GPU-cheap) */
+    .glow { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+    .glow::before, .glow::after {
+      content: ""; position: absolute; width: 70vmax; height: 70vmax; border-radius: 50%;
+      will-change: transform;
+    }
+    .glow::before { top: -35vmax; right: -20vmax; background: radial-gradient(circle, rgba(26,155,255,.28), transparent 60%); animation: drift 18s var(--ease) infinite alternate; }
+    .glow::after  { bottom: -40vmax; left: -25vmax; background: radial-gradient(circle, rgba(0,191,255,.14), transparent 60%); animation: drift 22s var(--ease) infinite alternate-reverse; }
+    @keyframes drift { to { transform: translate3d(-6vmax, 5vmax, 0) scale(1.08); } }
+
+    /* Header */
+    header { padding: 22px 0; }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.2rem; letter-spacing: -.02em; }
+    .logo i { width: 30px; height: 30px; border-radius: 8px; background: var(--blue); display: grid; place-items: center; font-style: normal; font-size: .95rem; color: #fff; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); padding: 8px 16px; border-radius: 99px; font-size: .9rem; transition: border-color .25s, background .25s; }
+    .pill:hover { border-color: var(--blue); background: rgba(26,155,255,.08); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #25D366; box-shadow: 0 0 0 0 rgba(37,211,102,.6); animation: ping 2.4s infinite; }
+    @keyframes ping { 70%, 100% { box-shadow: 0 0 0 8px rgba(37,211,102,0); } }
+
+    /* Hero */
+    .hero { padding: clamp(48px, 10vh, 110px) 0 56px; }
+    .eyebrow { display: inline-block; color: var(--blue-light); font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 22px; }
+    h1 { font-size: clamp(2.9rem, 9.5vw, 7rem); line-height: .95; letter-spacing: -.045em; font-weight: 700; max-width: 11ch; }
+    h1 em { font-style: normal; background: linear-gradient(90deg, var(--blue) 0%, #00BFFF 50%, var(--blue-light) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-row { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: end; margin-top: 40px; }
+    .lead { color: var(--muted); font-size: clamp(1.02rem, 1.6vw, 1.18rem); max-width: 520px; }
+    .lead b { color: var(--text); font-weight: 500; }
+    .cta { justify-self: end; text-align: right; }
+
     .btn {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: var(--green); color: #fff; text-decoration: none;
-      font-weight: 700; font-size: 1.2rem; padding: 18px 34px; border-radius: 50px;
-      box-shadow: 0 10px 28px rgba(37,211,102,.4); transition: transform .15s;
+      position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 12px;
+      background: var(--blue); color: #fff; font-weight: 700; font-size: 1.12rem;
+      padding: 18px 30px; border-radius: 99px;
+      box-shadow: 0 10px 40px -8px rgba(26,155,255,.65);
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
     }
-    .btn:hover { transform: translateY(-2px); }
-    .btn svg { width: 26px; height: 26px; fill: #fff; }
-    .phone { display: block; margin-top: 14px; opacity: .8; }
-    .tech { display: inline-block; margin-top: 26px; color: var(--green); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; }
-    .tech:hover { border-color: var(--green); }
-    footer { text-align: center; padding: 18px; font-size: .85rem; opacity: .6; }
+    .btn::after { /* shine sweep on hover */
+      content: ""; position: absolute; inset: 0; transform: translateX(-120%);
+      background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+      transition: transform .7s var(--ease);
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 16px 50px -8px rgba(26,155,255,.8); }
+    .btn:hover::after { transform: translateX(120%); }
+    .btn svg { width: 24px; height: 24px; fill: currentColor; flex-shrink: 0; }
+    .btn .arrow { transition: transform .35s var(--ease); }
+    .btn:hover .arrow { transform: translateX(4px); }
+    .phone { display: block; margin-top: 12px; color: var(--muted); font-size: .95rem; letter-spacing: .02em; }
+
+    /* Marquee */
+    .marquee { border-block: 1px solid var(--line); padding: 20px 0; overflow: hidden; margin-top: 30px; }
+    .track { display: flex; width: max-content; animation: scroll 32s linear infinite; }
+    .track span { font-size: clamp(1.4rem, 3.2vw, 2.3rem); font-weight: 500; letter-spacing: -.02em; padding-right: 40px; white-space: nowrap; color: rgba(234,244,255,.85); }
+    .track span::after { content: "✦"; color: var(--blue); margin-left: 40px; font-size: .7em; vertical-align: middle; }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+
+    /* Steps */
+    .steps { padding: 90px 0 40px; }
+    .section-label { color: var(--blue-light); font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 28px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 30px 28px 34px;
+      transition: transform .4s var(--ease), border-color .4s, background .4s;
+    }
+    .card:hover { transform: translateY(-6px); border-color: rgba(26,155,255,.5); background: rgba(26,155,255,.06); }
+    .num { font-size: .9rem; color: var(--blue); font-weight: 700; letter-spacing: .08em; }
+    .card h3 { font-size: 1.45rem; letter-spacing: -.02em; margin: 34px 0 8px; line-height: 1.15; }
+    .card p { color: var(--muted); }
+
+    /* Technician band */
+    .tech { padding: 40px 0 90px; }
+    .tech-box {
+      border: 1px solid var(--line); border-radius: 28px; padding: clamp(28px, 5vw, 56px);
+      display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+      background: linear-gradient(120deg, rgba(26,155,255,.12), rgba(26,155,255,0) 60%);
+    }
+    .tech-box h2 { font-size: clamp(1.7rem, 4vw, 2.8rem); letter-spacing: -.035em; line-height: 1.05; }
+    .tech-box p { color: var(--muted); margin-top: 8px; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--blue); color: var(--text);
+      padding: 15px 26px; border-radius: 99px; font-weight: 500;
+      transition: background .3s, color .3s;
+    }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+
+    footer { border-top: 1px solid var(--line); padding: 26px 0; color: var(--muted); font-size: .88rem; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+    /* Entrance animation: opacity + transform only, no layout shift */
+    .rise { opacity: 0; transform: translateY(24px); animation: rise .9s var(--ease) forwards; }
+    .d1 { animation-delay: .05s; } .d2 { animation-delay: .15s; } .d3 { animation-delay: .28s; } .d4 { animation-delay: .4s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+
+    @media (max-width: 820px) {
+      .hero-row { grid-template-columns: 1fr; gap: 30px; }
+      .cta { justify-self: start; text-align: left; }
+      .grid { grid-template-columns: 1fr; }
+      .card h3 { margin-top: 18px; }
+    }
+    .label-short { display: none; }
+    @media (max-width: 420px) {
+      .pill .label { display: none; }
+      .pill .label-short { display: inline; }
+      .btn { width: 100%; justify-content: center; }
+      .cta { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .rise { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body>
-  <main>
-    <div class="box">
-      <div class="logo">Gadgets<span>&amp;</span>Electronics</div>
+  <div class="glow" aria-hidden="true"></div>
 
-      <h1>Get your gadget fixed without leaving your house.</h1>
-
-      <p class="lead">
-        Send us a photo or video of the problem and get an online diagnosis.
-        We connect you with a trusted repair technician, and the repair comes to you.
-        People who need repairs and the technicians who do them, on one platform.
-      </p>
-
-      <ul>
-        <li>Online diagnosis</li>
-        <li>Phones &amp; tablets</li>
-        <li>Laptops &amp; PCs</li>
-        <li>TVs &amp; home electronics</li>
-        <li>Pickup / at-home repair</li>
-      </ul>
-
-      <a class="btn" href="https://wa.me/2349122888508?text=Hi%2C%20I%20need%20a%20repair.%20My%20device%20is%3A%20" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.4 9.4 0 0 1-1.44-5.01c0-5.2 4.23-9.43 9.43-9.43 2.52 0 4.89.98 6.67 2.77a9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.23 9.42-9.43 9.42m8.02-17.45A11.27 11.27 0 0 0 12.05.72C5.8.72.71 5.8.71 12.05c0 2 .52 3.95 1.52 5.66L.62 23.28l5.7-1.5a11.3 11.3 0 0 0 5.73 1.46h.01c6.25 0 11.33-5.08 11.34-11.33 0-3.03-1.18-5.88-3.32-8.02"/></svg>
-        Chat with us on WhatsApp
-      </a>
-      <span class="phone">+234 912 288 8508</span>
-
-      <a class="tech" href="https://wa.me/2349122888508?text=Hi%2C%20I%27m%20a%20repair%20technician%20and%20I%27d%20like%20to%20join%20the%20platform." target="_blank" rel="noopener">
-        Are you a repair technician? Join us on WhatsApp &rarr;
-      </a>
+  <header>
+    <div class="wrap">
+      <a class="logo" href="/"><i>G</i>Gadgelect</a>
+      <a class="pill" href="https://wa.me/2349122888508" target="_blank" rel="noopener"><span class="dot"></span><span class="label">Chat on WhatsApp</span><span class="label-short">WhatsApp</span></a>
     </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow rise d1">Online diagnosis &middot; At-home repairs</span>
+        <h1 class="rise d2">Repairs that come <em>to&nbsp;you.</em></h1>
+
+        <div class="hero-row">
+          <p class="lead rise d3">
+            Send a photo or video of the problem and get an <b>online diagnosis</b>.
+            We connect you with a trusted technician, so you <b>don't have to leave your house</b>.
+            People who need repairs and the people who fix them, on one platform.
+          </p>
+
+          <div class="cta rise d4">
+            <a class="btn" href="https://wa.me/2349122888508?text=Hi%20Gadgelect%2C%20I%20need%20a%20repair.%20My%20device%20is%3A%20" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.4 9.4 0 0 1-1.44-5.01c0-5.2 4.23-9.43 9.43-9.43 2.52 0 4.89.98 6.67 2.77a9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.23 9.42-9.43 9.42m8.02-17.45A11.27 11.27 0 0 0 12.05.72C5.8.72.71 5.8.71 12.05c0 2 .52 3.95 1.52 5.66L.62 23.28l5.7-1.5a11.3 11.3 0 0 0 5.73 1.46h.01c6.25 0 11.33-5.08 11.34-11.33 0-3.03-1.18-5.88-3.32-8.02"/></svg>
+              Start on WhatsApp <span class="arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <span class="phone">+234 912 288 8508</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="track">
+          <span>Phones</span><span>Laptops</span><span>Tablets</span><span>TVs</span><span>Game consoles</span><span>Smartwatches</span><span>Speakers</span><span>Home electronics</span>
+          <span>Phones</span><span>Laptops</span><span>Tablets</span><span>TVs</span><span>Game consoles</span><span>Smartwatches</span><span>Speakers</span><span>Home electronics</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps">
+      <div class="wrap">
+        <p class="section-label">How it works</p>
+        <div class="grid">
+          <div class="card">
+            <span class="num">01</span>
+            <h3>Message us on WhatsApp</h3>
+            <p>Tell us the device and what's wrong. Add a photo or a short video.</p>
+          </div>
+          <div class="card">
+            <span class="num">02</span>
+            <h3>Get an online diagnosis</h3>
+            <p>A technician looks at it remotely and tells you what it needs and what it costs.</p>
+          </div>
+          <div class="card">
+            <span class="num">03</span>
+            <h3>Fixed, without leaving home</h3>
+            <p>We arrange pickup or an at-home repair and get your device back to you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tech">
+      <div class="wrap">
+        <div class="tech-box">
+          <div>
+            <h2>Do you fix gadgets?</h2>
+            <p>Join the platform and get connected to people who need repairs.</p>
+          </div>
+          <a class="btn-outline" href="https://wa.me/2349122888508?text=Hi%20Gadgelect%2C%20I%27m%20a%20repair%20technician%20and%20I%27d%20like%20to%20join%20the%20platform." target="_blank" rel="noopener">
+            Join as a technician <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>&copy; 2026 gadgetsandelectronics.com</footer>
+  <footer>
+    <div class="wrap">
+      <span>&copy; 2026 Gadgelect &middot; gadgetsandelectronics.com</span>
+      <a href="https://wa.me/2349122888508" target="_blank" rel="noopener">WhatsApp +234 912 288 8508</a>
+    </div>
+  </footer>
 </body>
 </html>
